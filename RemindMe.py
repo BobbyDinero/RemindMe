@@ -136,20 +136,25 @@ Example:
     def parse_and_display_markdown(self, parent_frame, markdown_text):
         """Parse markdown and display with formatting using tkinter Text widget"""
 
-        # Create text widget
+        # Create a container frame to center the text widget
+        container = tk.Frame(parent_frame, bg="#1a1a1a")
+        container.pack(fill=tk.BOTH, expand=True)
+
+        # Create text widget with fixed width for centering
         text_widget = tk.Text(
-            parent_frame,
+            container,
             font=("Arial", 18),
             bg="#1a1a1a",
             fg="#00ff00",
             wrap=tk.WORD,
             borderwidth=0,
             highlightthickness=0,
-            padx=50,
+            width=80,  # Fixed width in characters
+            padx=20,
             pady=20,
             spacing3=10,
         )
-        text_widget.pack(fill=tk.BOTH, expand=True, padx=100, pady=40)
+        text_widget.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
         # Configure tags for different markdown elements
         text_widget.tag_configure(
